@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>US Live Stock Screener</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f7f9fc; color: #222; }
+    h1 { text-align: center; }
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 15px; }
+    input, select, button { padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #007bff; color: white; border: none; cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #007bff; color: white; cursor: pointer; }
+    tr:nth-child(even) { background: #f2f2f2; }
+    .green { color: green; }
+    .red { color: red; }
+  </style>
+</head>
+<body>
+  <h1>📈 US Live Stock Screener (Finnhub)</h1>
+  <div class="controls">
+    <input id="search" placeholder="Search symbol or name">
+    <select id="sectorFilter"><option value="">All Sectors</option></select>
+    <select id="capFilter">
+      <option value="">Market Cap</option>
+      <option value="mega">> 200B</option>
+      <option value="large">10B - 200B</option>
+      <option value="mid">2B - 10B</option>
+      <option value="small">< 2B</option>
+    </select>
+    <select id="priceFilter">
+      <option value="">Price</option>
+      <option value="p1">< $20</option>
+      <option value="p2">$20 - $100</option>
+      <option value="p3">$100 - $500</option>
+      <option value="p4">> $500</option>
+    </select>
+    <button id="refreshBtn">Refresh</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Symbol</th><th>Name</th><th>Price</th><th>Change %</th><th>Market Cap</th><th>Sector</th>
+      </tr>
+    </thead>
+    <tbody id="stockBody"></tbody>
+  </table>
+  <p style="text-align:center;margin-top:15px;color:#666;">Data provided by Finnhub.io — free tier</p>
+  <script src="main.js"></script>
+</body>
+</html>
